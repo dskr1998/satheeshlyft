@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('checkversion'){
+            steps {
+                sh 'git --version'
+            }
+        }
+        stage('checkout'){
+            steps {
+               git branch: 'main', credentialsId: 'GIT_CRED_ID', url: 'https://github.com/dskr1998/satheeshlyft.git'
+                sh 'echo checkout completed'
+            }   
+        }       
+    }
+}
